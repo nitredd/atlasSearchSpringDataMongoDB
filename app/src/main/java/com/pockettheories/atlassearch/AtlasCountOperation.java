@@ -8,18 +8,15 @@ import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AtlasSearchOperation implements AggregationOperation {
+public class AtlasCountOperation implements AggregationOperation {
     protected SearchOperator searchOperation;
     protected String indexName;
     protected CountType countType;
     protected long countThreshold = -1;
 
 
-    //TODO Add highlight
-
-
-    public AtlasSearchOperation(SearchOperator searchOperation, String indexName) { this.searchOperation = searchOperation; this.indexName = indexName != null ? indexName : "default"; }
-    public AtlasSearchOperation(SearchOperator searchOperation) { this(searchOperation, null); }
+    public AtlasCountOperation(SearchOperator searchOperation, String indexName) { this.searchOperation = searchOperation; this.indexName = indexName != null ? indexName : "default"; }
+    public AtlasCountOperation(SearchOperator searchOperation) { this(searchOperation, null); }
 
     public String getIndexName() {
         return indexName;
@@ -35,22 +32,6 @@ public class AtlasSearchOperation implements AggregationOperation {
 
     public void setSearchOperation(SearchOperator searchOperation) {
         this.searchOperation = searchOperation;
-    }
-
-    public CountType getCountType() {
-        return countType;
-    }
-
-    public void setCountType(CountType countType) {
-        this.countType = countType;
-    }
-
-    public long getCountThreshold() {
-        return countThreshold;
-    }
-
-    public void setCountThreshold(long countThreshold) {
-        this.countThreshold = countThreshold;
     }
 
     @Override
@@ -79,6 +60,22 @@ public class AtlasSearchOperation implements AggregationOperation {
 
     @Override
     public String getOperator() {
-        return "$search";
+        return "$searchMeta";
+    }
+
+    public CountType getCountType() {
+        return countType;
+    }
+
+    public void setCountType(CountType countType) {
+        this.countType = countType;
+    }
+
+    public long getCountThreshold() {
+        return countThreshold;
+    }
+
+    public void setCountThreshold(long countThreshold) {
+        this.countThreshold = countThreshold;
     }
 }

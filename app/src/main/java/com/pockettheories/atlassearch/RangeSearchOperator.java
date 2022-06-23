@@ -22,7 +22,7 @@ public class RangeSearchOperator<T> implements SearchOperator {
     public Document toDocument() {
         Document opDoc;
 
-        if (path == "*") {
+        if (path.equals("*")) {
             opDoc = new Document("path", new Document("wildcard", "*"));
         } else {
             opDoc = new Document("path", path);

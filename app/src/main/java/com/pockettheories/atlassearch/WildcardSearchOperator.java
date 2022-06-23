@@ -19,7 +19,7 @@ public class WildcardSearchOperator implements SearchOperator {
     public Document toDocument() {
         Document opDoc = new Document("query", query);
 
-        if (path == "*") {
+        if (path.equals("*")) {
             opDoc.append("path", new Document("wildcard", "*"));
         } else {
             opDoc.append("path", path);
