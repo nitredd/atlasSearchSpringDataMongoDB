@@ -164,7 +164,38 @@ public class AtlasCountOperationTest extends TestCase {
         assertTrue(
                 ((Long)((((Document)(aggResult.getMappedResults().get(0).get("count"))).get("total"))))
                         == 578);
+    }
 
+    public void testSearchTextSpaceMulti() {
+        MongoOperations mongoOps = new MongoTemplate(client, "sample_airbnb");
+        AtlasCountOperation aco = new AtlasCountOperation(
+            new TextSearchOperator(List.of("yacht", "Unite"), "space")
+            , "index1"
+        );
+        aco.setCountType(CountType.TOTAL);
+        Aggregation agg = Aggregation.newAggregation(
+            aco
+        );
+        AggregationResults<Document> aggResult = mongoOps.aggregate(agg, "listingsAndReviews", Document.class);
+        assertTrue(
+                ((Long)((((Document)(aggResult.getMappedResults().get(0).get("count"))).get("total"))))
+                        == 3);
+    }
+
+    public void testSearchPhraseSpaceMulti() {
+        MongoOperations mongoOps = new MongoTemplate(client, "sample_airbnb");
+        AtlasCountOperation aco = new AtlasCountOperation(
+                new PhraseSearchOperator(List.of("yacht", "Unite"), "space")
+                , "index1"
+        );
+        aco.setCountType(CountType.TOTAL);
+        Aggregation agg = Aggregation.newAggregation(
+                aco
+        );
+        AggregationResults<Document> aggResult = mongoOps.aggregate(agg, "listingsAndReviews", Document.class);
+        assertTrue(
+                ((Long)((((Document)(aggResult.getMappedResults().get(0).get("count"))).get("total"))))
+                        == 3);
     }
 
     @Override
