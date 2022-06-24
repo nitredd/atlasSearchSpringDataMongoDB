@@ -40,7 +40,7 @@ public class AtlasCountOperation implements AggregationOperation {
         if (this.indexName != null) {
             searchOperand = searchOperand.append("index", this.indexName != null ? this.indexName : "default");
         }
-        if (this.countType != CountType.NONE) {
+        if (this.countType != null && this.countType != CountType.NONE) {
             Document countDoc = new Document("type", this.countType.toString());
             if (this.countThreshold != -1) {
                 countDoc.append("threshold", this.countThreshold);
