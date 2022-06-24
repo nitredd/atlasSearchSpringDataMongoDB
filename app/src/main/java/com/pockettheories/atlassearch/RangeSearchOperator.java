@@ -35,7 +35,7 @@ public class RangeSearchOperator<T> implements SearchOperator {
             opDoc.append("gte", gte);
         }
         if (lt != null) {
-            opDoc.append("lt", gt);
+            opDoc.append("lt", lt);
         }
         if (lte != null) {
             opDoc.append("lte", lte);
