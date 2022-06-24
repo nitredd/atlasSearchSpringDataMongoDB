@@ -16,6 +16,15 @@ public class AtlasSearchOperation implements AggregationOperation {
     protected String highlightPath = null;
     protected Integer highlightMaxCharsToExamine = null;
     protected Integer highlightMaxNumPassages = null;
+    protected Boolean returnStoredSource = null;
+
+    public Boolean getReturnStoredSource() {
+        return returnStoredSource;
+    }
+
+    public void setReturnStoredSource(Boolean returnStoredSource) {
+        this.returnStoredSource = returnStoredSource;
+    }
 
     public String getHighlightPath() {
         return highlightPath;
@@ -85,6 +94,9 @@ public class AtlasSearchOperation implements AggregationOperation {
                 highlightDoc.append("maxNumPassages", highlightMaxNumPassages.intValue());
             }
             searchOperand.append("highlight", highlightDoc);
+        }
+        if (returnStoredSource != null) {
+            searchOperand.append("returnStoredSource", returnStoredSource.booleanValue());
         }
         Document retVal =new Document(getOperator(),searchOperand);
         return retVal;
