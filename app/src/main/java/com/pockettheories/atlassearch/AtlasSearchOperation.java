@@ -13,9 +13,19 @@ public class AtlasSearchOperation implements AggregationOperation {
     protected String indexName;
     protected CountType countType;
     protected long countThreshold = -1;
+    protected String highlightPath = null;
+    protected Integer highlightMaxCharsToExamine = null;
+    protected Integer highlightMaxNumPassages = null;
 
+    public String getHighlightPath() {
+        return highlightPath;
+    }
 
-    //TODO Add highlight
+    public void setHighlightPath(String highlightPath) {
+        this.highlightPath = highlightPath;
+    }
+
+//TODO Add highlight
 
 
     public AtlasSearchOperation(SearchOperator searchOperation, String indexName) { this.searchOperation = searchOperation; this.indexName = indexName != null ? indexName : "default"; }
@@ -65,6 +75,16 @@ public class AtlasSearchOperation implements AggregationOperation {
                 countDoc.append("threshold", this.countThreshold);
             }
             searchOperand = searchOperand.append("count", countDoc);
+        }
+        if (highlightPath != null) {
+            Document highlightDoc = new Document("path", highlightPath);
+            if (highlightMaxCharsToExamine != null) {
+                highlightDoc.append("maxCharsToExamine", highlightMaxCharsToExamine.intValue());
+            }
+            if (highlightMaxNumPassages != null) {
+                highlightDoc.append("maxNumPassages", highlightMaxNumPassages.intValue());
+            }
+            searchOperand.append("highlight", highlightDoc);
         }
         Document retVal =new Document(getOperator(),searchOperand);
         return retVal;
