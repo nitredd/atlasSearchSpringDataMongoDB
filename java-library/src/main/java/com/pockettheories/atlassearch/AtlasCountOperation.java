@@ -114,7 +114,7 @@ public class AtlasCountOperation implements AggregationOperation {
 
     /**
      * Returns the operator name
-     * @return
+     * @return Always returns "$searchMeta"
      */
     @Override
     public String getOperator() {
@@ -123,7 +123,7 @@ public class AtlasCountOperation implements AggregationOperation {
 
     /**
      * Returns the count type (lower bound, total)
-     * @return
+     * @return Count Type
      */
     public CountType getCountType() {
         return countType;
@@ -131,7 +131,7 @@ public class AtlasCountOperation implements AggregationOperation {
 
     /**
      * Sets the count type
-     * @param countType
+     * @param countType Count Type
      */
     public void setCountType(CountType countType) {
         this.countType = countType;
@@ -139,7 +139,7 @@ public class AtlasCountOperation implements AggregationOperation {
 
     /**
      * Gets the count threshold
-     * @return
+     * @return Count Threshold
      */
     public long getCountThreshold() {
         return countThreshold;
@@ -147,7 +147,7 @@ public class AtlasCountOperation implements AggregationOperation {
 
     /**
      * Sets the count threshold
-     * @param countThreshold
+     * @param countThreshold Count Threshold
      */
     public void setCountThreshold(long countThreshold) {
         this.countThreshold = countThreshold;

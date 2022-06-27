@@ -26,7 +26,7 @@ public class PhraseSearchOperator implements SearchOperator {
 
     /**
      * Accessor for query
-     * @return
+     * @return Query
      */
     public Object getQuery() {
         return query;
@@ -34,15 +34,15 @@ public class PhraseSearchOperator implements SearchOperator {
 
     /**
      * Mutator for query
-     * @param query
+     * @param query Query
      */
     public void setQuery(Object query) {
         this.query = query;
     }
 
     /**
-     * Accessor for path
-     * @return
+     * Accessor for Field path
+     * @return Field path
      */
     public String getPath() {
         return path;
@@ -50,7 +50,7 @@ public class PhraseSearchOperator implements SearchOperator {
 
     /**
      * Mutator for path
-     * @param path
+     * @param path Field path
      */
     public void setPath(String path) {
         this.path = path;
@@ -58,7 +58,7 @@ public class PhraseSearchOperator implements SearchOperator {
 
     /**
      * Accessor for fuzzy maximum edits
-     * @return
+     * @return Fuzzy maximum edits
      */
     public Integer getFuzzyMaxEdits() {
         return fuzzyMaxEdits;
@@ -66,7 +66,7 @@ public class PhraseSearchOperator implements SearchOperator {
 
     /**
      * Mutator for fuzzy maximum edits
-     * @param fuzzyMaxEdits
+     * @param fuzzyMaxEdits Fuzzy maximum edits
      */
     public void setFuzzyMaxEdits(Integer fuzzyMaxEdits) {
         this.fuzzyMaxEdits = fuzzyMaxEdits;
@@ -74,31 +74,31 @@ public class PhraseSearchOperator implements SearchOperator {
 
     /**
      * Constructor to set the query, field path, and fuzzy maximum edits
-     * @param query
-     * @param path
-     * @param fuzzyMaxEdits
+     * @param query Query
+     * @param path Field path
+     * @param fuzzyMaxEdits Fuzzy maximum edits
      */
     public PhraseSearchOperator(String query, String path, Integer fuzzyMaxEdits) { this.query = query; this.path = path; this.fuzzyMaxEdits = fuzzyMaxEdits; }
 
     /**
      * Constructor to set the query and field path
-     * @param query
-     * @param path
+     * @param query Query
+     * @param path Field path
      */
     public PhraseSearchOperator(String query, String path) { this(query, path, null); }
 
     /**
      * Constructor to set multi-query, field path, and fuzzy maximum edits
-     * @param query
-     * @param path
-     * @param fuzzyMaxEdits
+     * @param query Query
+     * @param path Field path
+     * @param fuzzyMaxEdits Fuzzy maximum edits
      */
     public PhraseSearchOperator(List<String> query, String path, Integer fuzzyMaxEdits) { this.query = query; this.path = path; this.fuzzyMaxEdits = fuzzyMaxEdits; }
 
     /**
      * Constructor to set multi-query and field path
-     * @param query
-     * @param path
+     * @param query Query
+     * @param path Field path
      */
     public PhraseSearchOperator(List<String> query, String path) { this(query, path, null); }
 
@@ -109,7 +109,7 @@ public class PhraseSearchOperator implements SearchOperator {
 
     /**
      * Builds the BSON document
-     * @return
+     * @return BSON document
      */
     @Override
     public Document toDocument() {

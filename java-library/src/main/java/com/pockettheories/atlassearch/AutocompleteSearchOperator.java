@@ -38,7 +38,7 @@ public class AutocompleteSearchOperator implements SearchOperator {
 
     /**
      * Set the query
-     * @param query
+     * @param query Query
      */
     public void setQuery(String query) {
         this.query = query;
@@ -54,7 +54,7 @@ public class AutocompleteSearchOperator implements SearchOperator {
 
     /**
      * Set the field path
-     * @param path
+     * @param path field path
      */
     public void setPath(String path) {
         this.path = path;
@@ -70,7 +70,7 @@ public class AutocompleteSearchOperator implements SearchOperator {
 
     /**
      * Set the Fuzzy Maximum Edits
-     * @param fuzzyMaxEdits
+     * @param fuzzyMaxEdits Fuzzy Maximum Edits
      */
     public void setFuzzyMaxEdits(Integer fuzzyMaxEdits) {
         this.fuzzyMaxEdits = fuzzyMaxEdits;
@@ -86,7 +86,7 @@ public class AutocompleteSearchOperator implements SearchOperator {
 
     /**
      * Set the Token Order
-     * @param tokenOrder
+     * @param tokenOrder Token Order
      */
     public void setTokenOrder(String tokenOrder) {
         this.tokenOrder = tokenOrder;
@@ -114,7 +114,7 @@ public class AutocompleteSearchOperator implements SearchOperator {
 
     /**
      * Build the BSON document for the auto complete operator
-     * @return
+     * @return BSON document for the auto complete operator
      */
     @Override
     public Document toDocument() {

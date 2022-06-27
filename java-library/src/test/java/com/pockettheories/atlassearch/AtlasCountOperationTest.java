@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 
-import javax.print.Doc;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;

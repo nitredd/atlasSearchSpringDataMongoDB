@@ -38,6 +38,11 @@ public class CompoundSearchOperator implements SearchOperator {
     public Integer minimumShouldMatch = null;
 
     /**
+     * Parameterless constructor
+     */
+    public CompoundSearchOperator() { }
+
+    /**
      * Build the BSON document for the compound operator
      * @return BSON document
      */

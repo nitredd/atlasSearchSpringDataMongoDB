@@ -6,7 +6,7 @@ import javax.print.Doc;
 
 /**
  * Range search operator
- * @param <T>
+ * @param <T> Data type for the range comparison
  */
 public class RangeSearchOperator<T> implements SearchOperator {
     /**
@@ -36,7 +36,7 @@ public class RangeSearchOperator<T> implements SearchOperator {
 
     /**
      * Accessor for field path
-     * @return
+     * @return Field path
      */
     public String getPath() {
         return path;
@@ -44,7 +44,7 @@ public class RangeSearchOperator<T> implements SearchOperator {
 
     /**
      * Mutator for field path
-     * @param path
+     * @param path Field path
      */
     public void setPath(String path) {
         this.path = path;
@@ -52,7 +52,7 @@ public class RangeSearchOperator<T> implements SearchOperator {
 
     /**
      * Accessor for greater than
-     * @return
+     * @return Greater than value
      */
     public T getGt() {
         return gt;
@@ -60,7 +60,7 @@ public class RangeSearchOperator<T> implements SearchOperator {
 
     /**
      * Mutator for greater than
-     * @param gt
+     * @param gt Greater than value
      */
     public void setGt(T gt) {
         this.gt = gt;
@@ -68,7 +68,7 @@ public class RangeSearchOperator<T> implements SearchOperator {
 
     /**
      * Accessor for greater than or equals
-     * @return
+     * @return Greater than or equals value
      */
     public T getGte() {
         return gte;
@@ -76,7 +76,7 @@ public class RangeSearchOperator<T> implements SearchOperator {
 
     /**
      * Mutator for greater than or equals
-     * @param gte
+     * @param gte Greater than or equals value
      */
     public void setGte(T gte) {
         this.gte = gte;
@@ -84,7 +84,7 @@ public class RangeSearchOperator<T> implements SearchOperator {
 
     /**
      * Accessor for less than
-     * @return
+     * @return Less than value
      */
     public T getLt() {
         return lt;
@@ -92,7 +92,7 @@ public class RangeSearchOperator<T> implements SearchOperator {
 
     /**
      * Mutator for less than
-     * @param lt
+     * @param lt Less than value
      */
     public void setLt(T lt) {
         this.lt = lt;
@@ -100,7 +100,7 @@ public class RangeSearchOperator<T> implements SearchOperator {
 
     /**
      * Accessor for less than or equals
-     * @return
+     * @return Less than or equals value
      */
     public T getLte() {
         return lte;
@@ -108,7 +108,7 @@ public class RangeSearchOperator<T> implements SearchOperator {
 
     /**
      * Mutator for less than or equals
-     * @param lte
+     * @param lte Less than or equals value
      */
     public void setLte(T lte) {
         this.lte = lte;
@@ -116,41 +116,41 @@ public class RangeSearchOperator<T> implements SearchOperator {
 
     /**
      * Constructor with field path
-     * @param path
+     * @param path Field path
      */
     public RangeSearchOperator(String path) { this.path = path; }
 
     /**
      * Chain operator for greater than
-     * @param value
-     * @return
+     * @param value Greather than value
+     * @return Instance of the range search operator with the greater than value set
      */
     public RangeSearchOperator gt(T value) { this.gt = value; return this; }
 
     /**
      * Chain operator for greater than or equals
-     * @param value
-     * @return
+     * @param value Greater than or equals value
+     * @return Instance of the range search operator with the greater than or equals value set
      */
     public RangeSearchOperator gte(T value) { this.gte = value; return this; }
 
     /**
      * Chain operator for less than
-     * @param value
-     * @return
+     * @param value Less than value
+     * @return Instance of the range search operator with the lesser than value set
      */
     public RangeSearchOperator lt(T value) { this.lt = value; return this; }
 
     /**
      * Chain operator for less than or equals
-     * @param value
-     * @return
+     * @param value Lesser than or equals value
+     * @return Instance of the range search operator with the lesser than or equals value set
      */
     public RangeSearchOperator lte(T value) { this.lte = value; return this; }
 
     /**
      * Builds the BSON document for the operator
-     * @return
+     * @return BSON document
      */
     @Override
     public Document toDocument() {

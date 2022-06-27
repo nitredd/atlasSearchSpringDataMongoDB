@@ -54,7 +54,7 @@ public class AtlasSearchOperation implements AggregationOperation {
 
     /**
      * Get return stored source
-     * @return
+     * @return Return Stored Source flag
      */
     public Boolean getReturnStoredSource() {
         return returnStoredSource;
@@ -62,7 +62,7 @@ public class AtlasSearchOperation implements AggregationOperation {
 
     /**
      * Set return stored source
-     * @param returnStoredSource
+     * @param returnStoredSource Return Stored Source flag
      */
     public void setReturnStoredSource(Boolean returnStoredSource) {
         this.returnStoredSource = returnStoredSource;
@@ -70,7 +70,7 @@ public class AtlasSearchOperation implements AggregationOperation {
 
     /**
      * Get the highlight field path
-     * @return
+     * @return Highlight field path
      */
     public String getHighlightPath() {
         return highlightPath;
@@ -78,7 +78,7 @@ public class AtlasSearchOperation implements AggregationOperation {
 
     /**
      * Set the highlight field path
-     * @param highlightPath
+     * @param highlightPath Highlight field path
      */
     public void setHighlightPath(String highlightPath) {
         this.highlightPath = highlightPath;
@@ -86,20 +86,20 @@ public class AtlasSearchOperation implements AggregationOperation {
 
     /**
      * Set the search operation and use an index other than the "default"
-     * @param searchOperation
-     * @param indexName
+     * @param searchOperation Search Operation
+     * @param indexName Atlas Search Index Name
      */
     public AtlasSearchOperation(SearchOperator searchOperation, String indexName) { this.searchOperation = searchOperation; this.indexName = indexName != null ? indexName : "default"; }
 
     /**
      * Set the search operation
-     * @param searchOperation
+     * @param searchOperation Search Operation
      */
     public AtlasSearchOperation(SearchOperator searchOperation) { this(searchOperation, null); }
 
     /**
      * Returns the Atlas Search index name
-     * @return
+     * @return Atlas Search index name
      */
     public String getIndexName() {
         return indexName;
@@ -131,7 +131,7 @@ public class AtlasSearchOperation implements AggregationOperation {
 
     /**
      * Get the count type (lower bound, total)
-     * @return
+     * @return Count Type
      */
     public CountType getCountType() {
         return countType;
@@ -147,7 +147,7 @@ public class AtlasSearchOperation implements AggregationOperation {
 
     /**
      * Get the count threshold
-     * @return
+     * @return Count Threshold
      */
     public long getCountThreshold() {
         return countThreshold;
@@ -155,7 +155,7 @@ public class AtlasSearchOperation implements AggregationOperation {
 
     /**
      * Set the count threshold
-     * @return
+     * @param countThreshold Count Threshold
      */
     public void setCountThreshold(long countThreshold) {
         this.countThreshold = countThreshold;
@@ -210,7 +210,7 @@ public class AtlasSearchOperation implements AggregationOperation {
 
     /**
      * Returns the operator name
-     * @return
+     * @return Always returns "$search"
      */
     @Override
     public String getOperator() {

@@ -25,13 +25,13 @@ public enum CountType {
 
     /**
      * Constructor to hold the string value needed for the aggregation pipeline
-     * @param paramValue
+     * @param paramValue string value needed for the aggregation pipeline
      */
     CountType(String paramValue) { this.paramValue = paramValue; }
 
     /**
      * Converts to the string expected in the aggregation pipeline
-     * @return
+     * @return Parameter value for the aggregation pipeline
      */
     @Override
     public String toString() { return this.paramValue; }

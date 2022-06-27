@@ -5,9 +5,9 @@ import org.bson.Document;
 import javax.print.Doc;
 
 /**
- * Wildcard operator
+ * Regular expression search operator
  */
-public class WildcardSearchOperator implements SearchOperator {
+public class RegexSearchOperator implements SearchOperator {
     /**
      * Query
      */
@@ -25,7 +25,7 @@ public class WildcardSearchOperator implements SearchOperator {
 
     /**
      * Accessor for query
-     * @return
+     * @return Query
      */
     public String getQuery() {
         return query;
@@ -33,7 +33,7 @@ public class WildcardSearchOperator implements SearchOperator {
 
     /**
      * Mutator for query
-     * @param query
+     * @param query Query
      */
     public void setQuery(String query) {
         this.query = query;
@@ -41,7 +41,7 @@ public class WildcardSearchOperator implements SearchOperator {
 
     /**
      * Accessor for field path
-     * @return
+     * @return Field path
      */
     public String getPath() {
         return path;
@@ -49,7 +49,7 @@ public class WildcardSearchOperator implements SearchOperator {
 
     /**
      * Mutator for field path
-     * @param path
+     * @param path Field path
      */
     public void setPath(String path) {
         this.path = path;
@@ -57,7 +57,7 @@ public class WildcardSearchOperator implements SearchOperator {
 
     /**
      * Accessor for allow analyzed field
-     * @return
+     * @return Flag for allow analyzed field
      */
     public boolean getAllowAnalyzedField() {
         return allowAnalyzedField;
@@ -65,35 +65,35 @@ public class WildcardSearchOperator implements SearchOperator {
 
     /**
      * Mutator for allow analyzed field
-     * @param allowAnalyzedField
+     * @param allowAnalyzedField Flag for allow analyzed field
      */
     public void setAllowAnalyzedField(boolean allowAnalyzedField) {
         this.allowAnalyzedField = allowAnalyzedField;
     }
 
     /**
-     * Constructor for the wildcard operator with query, field path, and allow analyzed field
-     * @param query
-     * @param path
-     * @param allowAnalyzedField
+     * Constructor for the Regular Expression operator with query, field path, and allowAnalyzedField
+     * @param query Query
+     * @param path Field path
+     * @param allowAnalyzedField Flag for allow analyzed field
      */
-    public WildcardSearchOperator(String query, String path, boolean allowAnalyzedField) { this.query = query; this.path = path; this.allowAnalyzedField = allowAnalyzedField; }
+    public RegexSearchOperator(String query, String path, boolean allowAnalyzedField) { this.query = query; this.path = path; this.allowAnalyzedField = allowAnalyzedField; }
 
     /**
-     * Constructor for the wildcard operator with query and field path
-     * @param query
-     * @param path
+     * Constructor for the Regular Expression operator with query and field path
+     * @param query Query
+     * @param path Field path
      */
-    public WildcardSearchOperator(String query, String path) { this(query, path, false); }
+    public RegexSearchOperator(String query, String path) { this(query, path, false); }
 
     /**
-     * Parameterless constructor
+     * Parameter-less constructor
      */
-    public WildcardSearchOperator() { this(null, null, false); }
+    public RegexSearchOperator() { this(null, null, false); }
 
     /**
-     * Builds the BSON document for the operator
-     * @return
+     * Build the BSON document for the operator
+     * @return BSON document
      */
     @Override
     public Document toDocument() {
@@ -109,7 +109,7 @@ public class WildcardSearchOperator implements SearchOperator {
             opDoc.append("allowAnalyzedField", allowAnalyzedField);
         }
 
-        return new Document("wildcard",
+        return new Document("regex",
                 opDoc
         );
     }

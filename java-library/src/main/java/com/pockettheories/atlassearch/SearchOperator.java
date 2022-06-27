@@ -8,7 +8,7 @@ import org.bson.Document;
 public interface SearchOperator {
     /**
      * Builds the BSON document for the operator
-     * @return
+     * @return BSON Document for the operator
      */
     Document toDocument();
 }

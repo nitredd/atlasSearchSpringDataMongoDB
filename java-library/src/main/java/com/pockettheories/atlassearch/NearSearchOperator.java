@@ -26,7 +26,7 @@ public class NearSearchOperator<T> implements SearchOperator {
 
     /**
      * Accessor for origin
-     * @return
+     * @return Origin
      */
     public T getOrigin() {
         return origin;
@@ -34,7 +34,7 @@ public class NearSearchOperator<T> implements SearchOperator {
 
     /**
      * Mutator for origin
-     * @param origin
+     * @param origin Origin
      */
     public void setOrigin(T origin) {
         this.origin = origin;
@@ -42,7 +42,7 @@ public class NearSearchOperator<T> implements SearchOperator {
 
     /**
      * Accessor for field path
-     * @return
+     * @return Field path
      */
     public String getPath() {
         return path;
@@ -50,7 +50,7 @@ public class NearSearchOperator<T> implements SearchOperator {
 
     /**
      * Mutator for field path
-     * @param path
+     * @param path Field path
      */
     public void setPath(String path) {
         this.path = path;
@@ -58,7 +58,7 @@ public class NearSearchOperator<T> implements SearchOperator {
 
     /**
      * Accessor for pivot
-     * @return
+     * @return Pivot
      */
     public float getPivot() {
         return pivot;
@@ -66,7 +66,7 @@ public class NearSearchOperator<T> implements SearchOperator {
 
     /**
      * Mutator for pivot
-     * @param pivot
+     * @param pivot Pivot
      */
     public void setPivot(float pivot) {
         this.pivot = pivot;
@@ -74,9 +74,9 @@ public class NearSearchOperator<T> implements SearchOperator {
 
     /**
      * Constructor to set field path, origin, and pivot
-     * @param path
-     * @param origin
-     * @param pivot
+     * @param path Field path
+     * @param origin Origin
+     * @param pivot Pivot
      */
     public NearSearchOperator(String path, T origin, float pivot) { this.origin = origin; this.path = path; this.pivot = pivot; }
 
@@ -87,7 +87,7 @@ public class NearSearchOperator<T> implements SearchOperator {
 
     /**
      * Builds a BSON document
-     * @return
+     * @return BSON document
      */
     @Override
     public Document toDocument() {

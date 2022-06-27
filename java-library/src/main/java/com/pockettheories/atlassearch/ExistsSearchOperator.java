@@ -15,7 +15,7 @@ public class ExistsSearchOperator implements SearchOperator {
 
     /**
      * Accessor for the field path
-     * @return
+     * @return Field path
      */
     public String getPath() {
         return path;
@@ -23,7 +23,7 @@ public class ExistsSearchOperator implements SearchOperator {
 
     /**
      * Mutator for the field path
-     * @param path
+     * @param path Field path
      */
     public void setPath(String path) {
         this.path = path;
@@ -31,7 +31,7 @@ public class ExistsSearchOperator implements SearchOperator {
 
     /**
      * Constructor to set the field path
-     * @param path
+     * @param path Field path
      */
     public ExistsSearchOperator(String path) { this.path = path; }
 
@@ -42,7 +42,7 @@ public class ExistsSearchOperator implements SearchOperator {
 
     /**
      * Builds the BSON document for the operator
-     * @return
+     * @return BSON document for the operator
      */
     @Override
     public Document toDocument() {
