@@ -29,7 +29,7 @@ public class GeoShapeOperator implements SearchOperator {
 
     /**
      * Accessor for the field path
-     * @return
+     * @return Field path
      */
     public String getPath() {
         return path;
@@ -37,7 +37,7 @@ public class GeoShapeOperator implements SearchOperator {
 
     /**
      * Mutator for the field path
-     * @param path
+     * @param path Field path
      */
     public void setPath(String path) {
         this.path = path;
@@ -45,7 +45,7 @@ public class GeoShapeOperator implements SearchOperator {
 
     /**
      * Accessor for the geo relation
-     * @return
+     * @return Geo relation
      */
     public GeoRelation getRelation() {
         return relation;
@@ -53,7 +53,7 @@ public class GeoShapeOperator implements SearchOperator {
 
     /**
      * Mutator for the geo relation
-     * @param relation
+     * @param relation Geo relation
      */
     public void setRelation(GeoRelation relation) {
         this.relation = relation;
@@ -61,7 +61,7 @@ public class GeoShapeOperator implements SearchOperator {
 
     /**
      * Accessor for the querying geometry
-     * @return
+     * @return Geometry
      */
     public Geometry getGeometry() {
         return geometry;
@@ -69,7 +69,7 @@ public class GeoShapeOperator implements SearchOperator {
 
     /**
      * Mutator for the querying geometry
-     * @param geometry
+     * @param geometry Geometry
      */
     public void setGeometry(Geometry geometry) {
         this.geometry = geometry;
@@ -77,7 +77,7 @@ public class GeoShapeOperator implements SearchOperator {
 
     /**
      * Accessor for the scoring modifier
-     * @return
+     * @return Score modifier
      */
     public Document getScore() {
         return score;
@@ -85,7 +85,7 @@ public class GeoShapeOperator implements SearchOperator {
 
     /**
      * Mutator for the scoring modifier
-     * @param score
+     * @param score Score modifier
      */
     public void setScore(Document score) {
         this.score = score;
@@ -93,10 +93,10 @@ public class GeoShapeOperator implements SearchOperator {
 
     /**
      * Constructor to set field path, geo relation, geometry, score
-     * @param path
-     * @param relation
-     * @param geometry
-     * @param score
+     * @param path Field path
+     * @param relation Geo relation
+     * @param geometry Geometry
+     * @param score Score modifier
      */
     public GeoShapeOperator(String path, GeoRelation relation, com.mongodb.client.model.geojson.Geometry geometry, Document score) {
         this.path = path;
@@ -107,9 +107,9 @@ public class GeoShapeOperator implements SearchOperator {
 
     /**
      * Constructor to set field path, geo relation, geometry
-     * @param path
-     * @param relation
-     * @param geometry
+     * @param path Field path
+     * @param relation Geo relation
+     * @param geometry Geometry
      */
     public GeoShapeOperator(String path, GeoRelation relation, com.mongodb.client.model.geojson.Geometry geometry) { this(path, relation, geometry, null); }
 
