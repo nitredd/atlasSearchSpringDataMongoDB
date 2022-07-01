@@ -7,7 +7,7 @@ public enum CountType {
     /**
      * Unspecified
      */
-    NONE(""),
+    NONE(null),
     /**
      * Accurate upto threshold, and then provides a lower bound
      */
