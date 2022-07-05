@@ -20,8 +20,20 @@ The following operators of Atlas Search can be used with this library:
 * Regex
 * Text
 * Wildcard
+* Geo Within
+* Geo Shape
 
 ## Usage
+
+To add the dependency to a Maven project, include the following in your pom.xml file
+
+    <dependency>
+      <groupId>com.pockettheories</groupId>
+      <artifactId>atlas-search-spring-data-mongodb</artifactId>
+      <version>0.0.1</version>
+    </dependency>
+
+Import classes from the `com.pockettheories.atlassearch` package. Other dependencies are from the packages `com.mongodb.client` and `org.bson`.
 
 To use a single Atlas Search operation, use the Operator class directly, then wrap it within the AtlasSearchOperation and pass to Aggregation.newAggregation as follows:
 
@@ -60,4 +72,24 @@ To use multiple Atlas Search operations, pass an array of Operator objects into 
     );
     AggregationResults<Document> aggResult = mongoOps.aggregate(agg, "movies", Document.class);
 
+## Examples
 
+### 
+
+## Building
+
+Use `gradle build` to compile and produce a JAR file in the app/build/lib directory.
+
+## Testing
+
+Running all tests:
+
+    gradle test -DMONGOURI="mongodb+srv://....."
+
+Running specific test class (Eg. AtlasSearchOperationTest):
+
+    gradle test --tests com.pockettheories.atlassearch.AtlasSearchOperationTest -DMONGOURI="mongodb+srv://....."
+
+Running specific test method (Eg. AtlasCountOperationTest.testFirstReviewBefore2015):
+
+    gradle test --tests com.pockettheories.atlassearch.AtlasCountOperationTest.testFirstReviewBefore2015 -DMONGOURI="mongodb+srv://....."
