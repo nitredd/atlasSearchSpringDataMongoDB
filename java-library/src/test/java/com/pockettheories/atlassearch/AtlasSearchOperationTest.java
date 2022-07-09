@@ -122,6 +122,25 @@ public class AtlasSearchOperationTest extends TestCase {
         assertTrue((Integer)(((Document)(aggResult.getMappedResults().get(0))).get("bedrooms")) == 20);
     }
 
+    public void testPhraseSummary() {
+        MongoOperations mongoOps = new MongoTemplate(client, "sample_airbnb");
+//        CompoundSearchOperator cso = new CompoundSearchOperator();
+//        cso.mustList.addAll(List.of(  // Ensure we aren't using filterList when sorting - filtering doesn't score docs
+//                new NearSearchOperator<Integer>("bedrooms", 9999, 1.0f)
+//        ));
+//        AtlasSearchOperation aso = new AtlasSearchOperation(cso, "index1");
+
+        PhraseSearchOperator pso = new PhraseSearchOperator("duplex bedrooms", "summary", 5);
+        AtlasSearchOperation aso = new AtlasSearchOperation(pso, "index1");
+
+        Aggregation agg = Aggregation.newAggregation(
+                aso
+        );
+
+        AggregationResults<Document> aggResult = mongoOps.aggregate(agg, "listingsAndReviews", Document.class);
+        assertTrue(aggResult.getMappedResults().size() > 0);
+    }
+
     @Override
     public void tearDown() {
         client.close();

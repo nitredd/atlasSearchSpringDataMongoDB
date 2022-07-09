@@ -2,7 +2,6 @@ package com.pockettheories.atlassearch;
 
 import org.bson.Document;
 
-import javax.print.Doc;
 import java.util.List;
 
 /**
@@ -20,9 +19,9 @@ public class PhraseSearchOperator implements SearchOperator {
     protected String path = null;
 
     /**
-     * Fuzzy maximum edit
+     * Distance between words of the phrase
      */
-    protected Integer fuzzyMaxEdits = null;
+    protected Integer slop = null;
 
     /**
      * Accessor for query
@@ -57,28 +56,28 @@ public class PhraseSearchOperator implements SearchOperator {
     }
 
     /**
-     * Accessor for fuzzy maximum edits
-     * @return Fuzzy maximum edits
+     * Accessor for slop
+     * @return Distance between words of the phrase
      */
-    public Integer getFuzzyMaxEdits() {
-        return fuzzyMaxEdits;
+    public Integer getSlop() {
+        return slop;
     }
 
     /**
-     * Mutator for fuzzy maximum edits
-     * @param fuzzyMaxEdits Fuzzy maximum edits
+     * Mutator for slop
+     * @param slop Distance between words of the phrase
      */
-    public void setFuzzyMaxEdits(Integer fuzzyMaxEdits) {
-        this.fuzzyMaxEdits = fuzzyMaxEdits;
+    public void setSlop(Integer slop) {
+        this.slop = slop;
     }
 
     /**
-     * Constructor to set the query, field path, and fuzzy maximum edits
+     * Constructor to set the query, field path, and slop
      * @param query Query
      * @param path Field path
-     * @param fuzzyMaxEdits Fuzzy maximum edits
+     * @param slop Distance between words of the phrase
      */
-    public PhraseSearchOperator(String query, String path, Integer fuzzyMaxEdits) { this.query = query; this.path = path; this.fuzzyMaxEdits = fuzzyMaxEdits; }
+    public PhraseSearchOperator(String query, String path, Integer slop) { this.query = query; this.path = path; this.slop = slop; }
 
     /**
      * Constructor to set the query and field path
@@ -88,12 +87,12 @@ public class PhraseSearchOperator implements SearchOperator {
     public PhraseSearchOperator(String query, String path) { this(query, path, null); }
 
     /**
-     * Constructor to set multi-query, field path, and fuzzy maximum edits
+     * Constructor to set multi-query, field path, and Distance between words of the phrase
      * @param query Query
      * @param path Field path
-     * @param fuzzyMaxEdits Fuzzy maximum edits
+     * @param slop Distance between words of the phrase
      */
-    public PhraseSearchOperator(List<String> query, String path, Integer fuzzyMaxEdits) { this.query = query; this.path = path; this.fuzzyMaxEdits = fuzzyMaxEdits; }
+    public PhraseSearchOperator(List<String> query, String path, Integer slop) { this.query = query; this.path = path; this.slop = slop; }
 
     /**
      * Constructor to set multi-query and field path
@@ -121,8 +120,8 @@ public class PhraseSearchOperator implements SearchOperator {
             opDoc.append("path", path);
         }
 
-        if (fuzzyMaxEdits != null) {
-            opDoc.append("fuzzy", new Document("maxEdits", fuzzyMaxEdits.intValue()));
+        if (slop != null) {
+            opDoc.append("slop", slop.intValue());
         }
 
         return new Document("phrase",
