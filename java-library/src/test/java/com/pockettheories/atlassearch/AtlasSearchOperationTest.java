@@ -4,12 +4,16 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import junit.framework.TestCase;
 import org.bson.Document;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.aggregation.SortOperation;
 
 import java.util.List;
+
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.sort;
 
 // Before running this test case, create a dynamic-mapping index on sample_airbnb.listingsAndReviews
 
@@ -139,6 +143,52 @@ public class AtlasSearchOperationTest extends TestCase {
 
         AggregationResults<Document> aggResult = mongoOps.aggregate(agg, "listingsAndReviews", Document.class);
         assertTrue(aggResult.getMappedResults().size() > 0);
+    }
+
+    public void testCompoundMustNot() {
+        MongoOperations mongoOps = new MongoTemplate(client, "sample_airbnb");
+
+        //Search for "duplex apartment" but NOT "Barcelona"
+
+        CompoundSearchOperator cso = new CompoundSearchOperator();
+        cso.mustList.addAll(List.of(
+                new PhraseSearchOperator("duplex apartment", "summary")
+        ));
+        cso.mustNotList.addAll(List.of(
+                new TextSearchOperator("Barcelona", "name")
+        ));
+        AtlasSearchOperation aso = new AtlasSearchOperation(cso, "index1");
+
+        Aggregation agg = Aggregation.newAggregation(
+                aso
+        );
+
+        AggregationResults<Document> aggResult = mongoOps.aggregate(agg, "listingsAndReviews", Document.class);
+
+        assertTrue(aggResult.getMappedResults().size() == 16);
+
+        //Search for "duplex apartment"
+
+        CompoundSearchOperator cso2 = new CompoundSearchOperator();
+        cso2.mustList.addAll(List.of(
+                new PhraseSearchOperator("duplex apartment", "summary")
+        ));
+        AtlasSearchOperation aso2 = new AtlasSearchOperation(cso2, "index1");
+
+        SortOperation so = sort(
+            Sort.by(
+                Sort.Order.asc("name")
+            )
+        );
+
+        Aggregation agg2 = Aggregation.newAggregation(
+                aso2,
+                so
+        );
+
+        AggregationResults<Document> aggResult2 = mongoOps.aggregate(agg2, "listingsAndReviews", Document.class);
+
+        assertTrue(aggResult2.getMappedResults().size() == 17);
     }
 
     @Override
